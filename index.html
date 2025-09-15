@@ -77,10 +77,10 @@
 <script>
 function numberWithDots(x){ return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
 function getDiscountRate(qty){
-  if(qty>=10000) return 0.09;
-  if(qty>=5000) return 0.07;
-  if(qty>=3000) return 0.05;
-  if(qty>=2000) return 0.03;
+  if(qty>=10000) return 0.06;
+  if(qty>=5000) return 0.05;
+  if(qty>=3000) return 0.04;
+  if(qty>=2000) return 0.02;
   return 0;
 }
 function roundToNearestTen(x){ return Math.round(x/10)*10; }
@@ -94,7 +94,7 @@ function calculatePrice(){
 
   if(!width || !height || !quantityInput){ alert('Nhập đủ 3 thông số: ngang, cao, số lượng.'); return; }
 
-  const prices = { giay:70000, nhua:80000, kraf:75000 };
+  const prices = { giay:85000, nhua:100000, kraf:90000 };
   const fixedCost = 50000;
   const printingCostPer1000 = 45000;
 
