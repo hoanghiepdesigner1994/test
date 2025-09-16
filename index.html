@@ -7,7 +7,7 @@
   <title>Báo giá in tem decal - RUBY</title>
   <style>
     body { font-family: Arial, sans-serif; background:#f5f7fa; margin:0; padding:0; }
-    header { background:#2563eb; color:white; padding:18px 10px; text-align:center; }
+    header { background:#00a436; color:white; padding:18px 10px; text-align:center; }
     header img { height:72px; display:block; margin:0 auto 8px; }
     header h1 { margin:0; font-size:20px; letter-spacing:1px; }
     .container { max-width:880px; margin:22px auto; padding:18px; }
@@ -16,7 +16,7 @@
     label { display:block; margin:10px 0 6px; font-weight:600; }
     input, select, button { width:100%; padding:10px; border-radius:8px; border:1px solid #d1d5db; font-size:15px; }
     input::placeholder { color:#9ca3af; font-style:italic; }
-    button { background:#2563eb; color:white; border:none; margin-top:12px; cursor:pointer; font-weight:700; }
+    button { background:#00a436; color:white; border:none; margin-top:12px; cursor:pointer; font-weight:700; }
     button:hover { background:#1e40af; }
     .flex-row { display:flex; gap:16px; flex-wrap:wrap; }
     .col { flex:1 1 320px; }
@@ -43,11 +43,11 @@
         <label for="quantity">Số lượng tem:</label>
         <input type="number" id="quantity" placeholder="Ví dụ: 500" min="1" step="1">
 
-        <label for="decalType">Loại decal:</label>
+        <label for="decalType">Chất Liệu Decal:</label>
         <select id="decalType">
-          <option value="giay">Decal Giấy</option>
-          <option value="nhua">Decal Nhựa</option>
-          <option value="kraf">Decal Kraft</option>
+          <option value="Decal Giấy">Decal Giấy</option>
+          <option value="Decal Nhựa">Decal Nhựa</option>
+          <option value="Decal kraf">Decal Kraft</option>
         </select>
 
         <div class="muted" style="margin-top:8px">Lưu ý: tự động +1 tờ dự phòng; nếu số tem/tờ &lt; 10 thì cộng phụ phí 10%; tổng tiền làm tròn nghìn, đơn giá làm tròn hàng chục.</div>
@@ -77,6 +77,10 @@
 <script>
 function numberWithDots(x){ return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
 function getDiscountRate(qty){
+  if(qty>=50000) return 0.08;
+  if(qty>=40000) return 0.07;
+  if(qty>=30000) return 0.07;
+  if(qty>=20000) return 0.06;
   if(qty>=10000) return 0.06;
   if(qty>=5000) return 0.05;
   if(qty>=3000) return 0.04;
@@ -94,7 +98,7 @@ function calculatePrice(){
 
   if(!width || !height || !quantityInput){ alert('Nhập đủ 3 thông số: ngang, cao, số lượng.'); return; }
 
-  const prices = { giay:85000, nhua:100000, kraf:90000 };
+  const prices = { giay:80000, nhua:90000, kraf:85000 };
   const fixedCost = 50000;
   const printingCostPer1000 = 45000;
 
